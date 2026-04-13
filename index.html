@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>На скидках | Мебель в Дзержинске</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f0 100%);
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1d1d1f 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #86868b;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* 3D Glass Button */
+        .btn-glass {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.9) 0%, rgba(255, 107, 53, 0.7) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 
+                0 8px 32px rgba(255, 107, 53, 0.3),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-glass:hover::before {
+            left: 100%;
+        }
+
+        .btn-glass:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 12px 40px rgba(255, 107, 53, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-glass:active {
+            transform: translateY(-1px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1d1d1f;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f0 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .feature-card p {
+            color: #86868b;
+            font-size: 16px;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-progress {
+            width: 100%;
+            height: 8px;
+            background: #f5f5f7;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ff8c5a);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-step h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1d1d1f;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f0 100%);
+            border: 2px solid #f5f5f7;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+
+        .quiz-option img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-option span {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+            background: #f5f5f7;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8ed;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #f5f5f7;
+            border-radius: 15px;
+            background: white;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Catalog Section */
+        .catalog {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .catalog-item {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f0 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .catalog-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .catalog-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .catalog-item-info {
+            padding: 25px;
+        }
+
+        .catalog-item h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1d1d1f;
+        }
+
+        .catalog-item p {
+            color: #86868b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #86868b;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1d1d1f;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #86868b;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #86868b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .quiz-container {
+                padding: 30px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #ff6b35;
+            margin-bottom: 20px;
+        }
+
+        .success-message h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            color: #86868b;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">🔥 На скидках</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Преимущества</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#quiz">Пройти квиз</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Мебель вашей мечты по выгодным ценам</h1>
+            <p>Более 100 проверенных мебельщиков Дзержинска готовы изготовить мебель любого типа со скидкой до 40%</p>
+            <a href="#quiz" class="btn-glass">Рассчитать стоимость</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>100+ Производителей</h3>
+                    <p>Сотрудничаем с лучшими мебельными цехами Дзержинска</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Честные скидки</h3>
+                    <p>Экономия до 40% за счёт прямого сотрудничества с производителями</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Быстрое изготовление</h3>
+                    <p>Сроки от 7 дней благодаря оптимизированному производству</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Гарантия качества</h3>
+                    <p>Все производители проверены и имеют положительные отзывы</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Изготовим мебель по вашим размерам и предпочтениям</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Доставка и монтаж</h3>
+                    <p>Бережно доставим и профессионально установим вашу мебель</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="catalog">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="catalog-grid">
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&h=400&fit=crop" alt="Кухни на заказ">
+                    <div class="catalog-item-info">
+                        <h3>Кухни на заказ</h3>
+                        <p>Современные и классические кухни по индивидуальным размерам</p>
+                        <div class="price">от 25 000 ₽ <span class="old-price">от 35 000 ₽</span></div>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600&h=400&fit=crop" alt="Шкафы и гардеробные">
+                    <div class="catalog-item-info">
+                        <h3>Шкафы и гардеробные</h3>
+                        <p>Вместительные системы хранения для вашего дома</p>
+                        <div class="price">от 15 000 ₽ <span class="old-price">от 22 000 ₽</span></div>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop" alt="Мягкая мебель">
+                    <div class="catalog-item-info">
+                        <h3>Мягкая мебель</h3>
+                        <p>Диваны, кресла и пуфы для комфорта вашего дома</p>
+                        <div class="price">от 20 000 ₽ <span class="old-price">от 28 000 ₽</span></div>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&h=400&fit=crop" alt="Столы и стулья">
+                    <div class="catalog-item-info">
+                        <h3>Столы и стулья</h3>
+                        <p>Обеденные группы и рабочие места любого стиля</p>
+                        <div class="price">от 8 000 ₽ <span class="old-price">от 12 000 ₽</span></div>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=600&h=400&fit=crop" alt="Детская мебель">
+                    <div class="catalog-item-info">
+                        <h3>Детская мебель</h3>
+                        <p>Безопасная и функциональная мебель для детей</p>
+                        <div class="price">от 12 000 ₽ <span class="old-price">от 18 000 ₽</span></div>
+                    </div>
+                </div>
+                <div class="catalog-item">
+                    <img src="https://images.unsplash.com/photo-1517705008128-361805f42e61?w=600&h=400&fit=crop" alt="Мебель для ванной">
+                    <div class="catalog-item-info">
+                        <h3>Мебель для ванной</h3>
+                        <p>Влагостойкие решения для вашей ванной комнаты</p>
+                        <div class="price">от 10 000 ₽ <span class="old-price">от 15 000 ₽</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <h2 class="section-title">Рассчитайте стоимость вашей мебели</h2>
+            <div class="quiz-container">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar"></div>
+                </div>
+
+                <form id="quizForm">
+                    <!-- Step 1: Тип мебели -->
+                    <div class="quiz-step active" data-step="1">
+                        <h2>Какой тип мебели вас интересует?</h2>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-value="kitchen">
+                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=200&h=200&fit=crop" alt="Кухня">
+                                <span>Кухня</span>
+                            </div>
+                            <div class="quiz-option" data-value="wardrobe">
+                                <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=200&h=200&fit=crop" alt="Шкаф">
+                                <span>Шкаф</span>
+                            </div>
+                            <div class="quiz-option" data-value="sofa">
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop" alt="Диван">
+                                <span>Диван</span>
+                            </div>
+                            <div class="quiz-option" data-value="table">
+                                <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=200&h=200&fit=crop" alt="Стол">
+                                <span>Стол</span>
+                            </div>
+                            <div class="quiz-option" data-value="children">
+                                <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=200&h=200&fit=crop" alt="Детская">
+                                <span>Детская</span>
+                            </div>
+                            <div class="quiz-option" data-value="other">
+                                <img src="https://images.unsplash.com/photo-1517705008128-361805f42e61?w=200&h=200&fit=crop" alt="Другое">
+                                <span>Другое</span>
+                            </div>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" disabled>Назад</button>
+                            <button type="button" class="btn-glass" onclick="nextStep()">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Материал -->
+                    <div class="quiz-step" data-step="2">
+                        <h2>Какой материал предпочитаете?</h2>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-value="ldsp">
+                                <span>ЛДСП</span>
+                            </div>
+                            <div class="quiz-option" data-value="mdf">
+                                <span>МДФ</span>
+                            </div>
+                            <div class="quiz-option" data-value="massiv">
+                                <span>Массив дерева</span>
+                            </div>
+                            <div class="quiz-option" data-value="metal">
+                                <span>Металл</span>
+                            </div>
+                            <div class="quiz-option" data-value="glass">
+                                <span>Стекло</span>
+                            </div>
+                            <div class="quiz-option" data-value="any">
+                                <span>Любой</span>
+                            </div>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" onclick="prevStep()">Назад</button>
+                            <button type="button" class="btn-glass" onclick="nextStep()">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Размер -->
+                    <div class="quiz-step" data-step="3">
+                        <h2>Какой размер вам нужен?</h2>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-value="small">
+                                <span>До 1 м</span>
+                            </div>
+                            <div class="quiz-option" data-value="medium">
+                                <span>1-2 м</span>
+                            </div>
+                            <div class="quiz-option" data-value="large">
+                                <span>2-3 м</span>
+                            </div>
+                            <div class="quiz-option" data-value="xlarge">
+                                <span>Более 3 м</span>
+                            </div>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" onclick="prevStep()">Назад</button>
+                            <button type="button" class="btn-glass" onclick="nextStep()">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Стиль -->
+                    <div class="quiz-step" data-step="4">
+                        <h2>Какой стиль вам нравится?</h2>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-value="modern">
+                                <span>Современный</span>
+                            </div>
+                            <div class="quiz-option" data-value="classic">
+                                <span>Классический</span>
+                            </div>
+                            <div class="quiz-option" data-value="loft">
+                                <span>Лофт</span>
+                            </div>
+                            <div class="quiz-option" data-value="scandi">
+                                <span>Скандинавский</span>
+                            </div>
+                            <div class="quiz-option" data-value="provence">
+                                <span>Прованс</span>
+                            </div>
+                            <div class="quiz-option" data-value="any">
+                                <span>Любой</span>
+                            </div>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" onclick="prevStep()">Назад</button>
+                            <button type="button" class="btn-glass" onclick="nextStep()">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Бюджет -->
+                    <div class="quiz-step" data-step="5">
+                        <h2>Какой у вас бюджет?</h2>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-value="budget">
+                                <span>До 15 000 ₽</span>
+                            </div>
+                            <div class="quiz-option" data-value="medium">
+                                <span>15-30 000 ₽</span>
+                            </div>
+                            <div class="quiz-option" data-value="high">
+                                <span>30-50 000 ₽</span>
+                            </div>
+                            <div class="quiz-option" data-value="premium">
+                                <span>Более 50 000 ₽</span>
+                            </div>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" onclick="prevStep()">Назад</button>
+                            <button type="button" class="btn-glass" onclick="nextStep()">Далее</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Контакты -->
+                    <div class="quiz-step" data-step="6">
+                        <h2>Оставьте ваши контакты</h2>
+                        <p style="text-align: center; color: #86868b; margin-bottom: 30px;">Мы подберём для вас 3-5 лучших предложений от производителей Дзержинска</p>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Комментарий (необязательно)</label>
+                            <textarea id="comment" name="comment" placeholder="Пожелания к мебели, сроки и т.д."></textarea>
+                        </div>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn-secondary" onclick="prevStep()">Назад</button>
+                            <button type="submit" class="btn-glass">Отправить заявку</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h2>Заявка отправлена!</h2>
+                    <p>Наш менеджер свяжется с вами в течение 15 минут для уточнения деталей</p>
+                    <p style="margin-top: 20px; color: #ff6b35;">Вы получите 3-5 предложений от лучших производителей Дзержинска</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🔥 На скидках</h4>
+                    <p>Сервис по подбору мебели от производителей Дзержинска</p>
+                    <p>Более 100 проверенных мастеров</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>📍 г. Дзержинск</p>
+                    <p>📞 +7 (999) 000-00-00</p>
+                    <p>✉️ info@naskidkah-dzr.ru</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Режим работы</h4>
+                    <p>Пн-Пт: 9:00 - 20:00</p>
+                    <p>Сб-Вс: 10:00 - 18:00</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <a href="#">ВКонтакте</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 На скидках. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+        const answers = {};
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentStep - 1) / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Show step
+        function showStep(step) {
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`.quiz-step[data-step="${step}"]`).classList.add('active');
+            updateProgress();
+        }
+
+        // Next step
+        function nextStep() {
+            const selectedOption = document.querySelector(`.quiz-step[data-step="${currentStep}"] .quiz-option.selected`);
+            
+            if (!selectedOption && currentStep < 6) {
+                alert('Пожалуйста, выберите вариант ответа');
+                return;
+            }
+
+            if (selectedOption) {
+                answers[`step${currentStep}`] = selectedOption.dataset.value;
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        // Previous step
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        // Option selection
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Form submission
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            answers.name = document.getElementById('name').value;
+            answers.phone = document.getElementById('phone').value;
+            answers.comment = document.getElementById('comment').value;
+
+            // Here you would normally send the data to your server
+            console.log('Заявка:', answers);
+
+            // Show success message
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+
+            // Reset form (for demo purposes)
+            setTimeout(() => {
+                currentStep = 1;
+                document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                document.getElementById('quizForm').reset();
+                document.getElementById('quizForm').style.display = 'block';
+                document.getElementById('successMessage').classList.remove('show');
+                showStep(1);
+            }, 10000);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
